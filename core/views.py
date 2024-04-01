@@ -14,7 +14,6 @@ def courses(request):
 
 def modules(request):
     course = request.GET.get('course')
-    course = Course.objects.get(pk=int(course))
     modules = Module.objects.filter(course=course)
 
     context  = {
