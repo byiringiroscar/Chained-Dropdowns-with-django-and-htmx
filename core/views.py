@@ -10,3 +10,15 @@ def courses(request):
         'courses': courses
     }
     return render(request, 'university.html', context)
+
+
+def modules(request):
+    course = request.GET.get('course')
+    course = Course.objects.get(pk=int(course))
+    modules = Module.objects.filter(course=course)
+
+    context  = {
+        'modules': modules
+    }
+
+    return render(request, 'partials/modules.html', context)
